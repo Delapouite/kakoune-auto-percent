@@ -16,17 +16,17 @@ def -hidden if-cursor -params 2 %{
       echo "hook -group if-cursor window RawKey <ret> %{ \
         rmhooks window if-cursor
       }"
-      # enhanced behavior
-      echo "exec $1";
+      # prepend percent
+      echo "exec '%$kak_count$1'";
     else
       # default behavior
-      echo "exec $2"
+      echo "exec $kak_count$2"
     fi
   }
 }
 
-map global normal s ':if-cursor \\%s s<ret>'
-map global normal S ':if-cursor \\%S S<ret>'
-map global normal <a-s> ':if-cursor \\%<lt>a-s> <lt>a-s><ret>'
-map global normal <a-k> ':if-cursor \\%<lt>a-s><lt>a-k> <lt>a-k><ret>'
-map global normal <a-K> ':if-cursor \\%<lt>a-s><lt>a-K> <lt>a-K><ret>'
+map global normal s ':if-cursor s s<ret>'
+map global normal S ':if-cursor S S<ret>'
+map global normal <a-s> ':if-cursor <lt>a-s> <lt>a-s><ret>'
+map global normal <a-k> ':if-cursor <lt>a-s><lt>a-k> <lt>a-k><ret>'
+map global normal <a-K> ':if-cursor <lt>a-s><lt>a-K> <lt>a-K><ret>'
