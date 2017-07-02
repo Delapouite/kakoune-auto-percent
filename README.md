@@ -10,7 +10,7 @@ Add `auto-percent.kak` to your autoload dir: `~/.config/kak/autoload/`.
 
 Some primitives commands only make sense when they operate on selections bigger than the simple *cursor selection*.
 
-For intance, pressing `s` in normal mode with just a single *cursor selection* is not really useful.
+For instance, pressing `s` in normal mode with just a single *cursor selection* is not really useful.
 With this script, pressing `s` will first select the whole content of the buffer with `%`. Hence the name of this plugin.
 
 When the main selection is bigger than 1 char or/and they are more than 1 selection, the default behavior is applied.
