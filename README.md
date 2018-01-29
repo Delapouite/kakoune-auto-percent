@@ -23,6 +23,14 @@ Here are the commands affected by this script:
 - keep matching: `<a-k>` → `%<a-s><a-k>`
 - keep not matching: `<a-K>` → `%<a-s><a-K>`
 
+## See Also
+
+This behavior is somehow similar to the one found in [vis](https://github.com/martanne/vis):
+
+    If only one selection exists x and y default to the whole file 0,$.
+    
+In Kakoune dialect: the `x` command is `s` (select), the `y` command is `S` (split) and  the `0,$` address is `%` (whole buffer).
+
 ## Licence
 
 MIT
