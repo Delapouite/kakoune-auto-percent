@@ -1,7 +1,9 @@
 # used to cancel with <esc> and restore previous cursor
-decl -hidden str previous_cursor ''
+declare-option -hidden str previous_cursor ''
 
-def -hidden if-cursor -params 2 %{
+# arg1: enhanced key
+# arg2: default key
+define-command -hidden if-cursor -params 2 %{
   set window previous_cursor %val{selection_desc}
   %sh{
     length=${#kak_selections}
@@ -25,8 +27,9 @@ def -hidden if-cursor -params 2 %{
   }
 }
 
-map global normal s ':if-cursor s s<ret>'
-map global normal S ':if-cursor S S<ret>'
-map global normal <a-s> ':if-cursor <lt>a-s> <lt>a-s><ret>'
-map global normal <a-k> ':if-cursor <lt>a-s><lt>a-k> <lt>a-k><ret>'
-map global normal <a-K> ':if-cursor <lt>a-s><lt>a-K> <lt>a-K><ret>'
+map global normal s ':if-cursor s s<ret>' -docstring 'autopercent s'
+map global normal S ':if-cursor S S<ret>' -docstring 'autopercent S'
+map global normal <a-s> ':if-cursor <lt>a-s> <lt>a-s><ret>' -docstring 'autopercent <a-s>'
+map global normal <a-S> ':if-cursor <lt>a-S> <lt>a-S><ret>' -docstring 'autopercent <a-S>'
+map global normal <a-k> ':if-cursor <lt>a-s><lt>a-k> <lt>a-k><ret>' -docstring 'autopercent <a-k>'
+map global normal <a-K> ':if-cursor <lt>a-s><lt>a-K> <lt>a-K><ret>' -docstring 'autopercent <a-K>'

@@ -20,6 +20,7 @@ Here are the commands affected by this script:
 - select: `s` → `%s`
 - split: `S` → `%S`
 - split on new lines: `<a-s>` → `%<a-s>`
+- split on boundaries: `<a-S>` → `%<a-S>`
 - keep matching: `<a-k>` → `%<a-s><a-k>`
 - keep not matching: `<a-K>` → `%<a-s><a-K>`
 
@@ -30,6 +31,8 @@ This behavior is somehow similar to the one found in [vis](https://github.com/ma
     If only one selection exists x and y default to the whole file 0,$.
     
 In Kakoune dialect: the `x` command is `s` (select), the `y` command is `S` (split) and  the `0,$` address is `%` (whole buffer).
+
+- [kakoune-auto-star](https://github.com/Delapouite/kakoune-auto-star)
 
 ## Licence
 
