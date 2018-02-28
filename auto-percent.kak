@@ -1,17 +1,13 @@
-# used to cancel with <esc> and restore previous cursor
-declare-option -hidden str previous_cursor ''
-
 # arg1: enhanced key
 # arg2: default key
 define-command -hidden if-cursor -params 2 %{
-  set window previous_cursor %val{selection_desc}
   %sh{
     length=${#kak_selections}
 
     if [ $length -eq 1 ]; then
       # on cancelled prompt
       echo "hook -group if-cursor window RawKey <esc> %{ \
-        select '$kak_opt_previous_cursor'; \
+        select '$kak_selection_desc'; \
         rmhooks window if-cursor
       }"
       # on absence of match
