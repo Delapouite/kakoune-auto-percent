@@ -14,6 +14,11 @@ define-command -hidden if-cursor -params 2 %{
         select '$kak_opt_previous_cursor'; \
         rmhooks window if-cursor
       }"
+      # on absence of match
+      echo "hook -group if-cursor window RuntimeError 'nothing selected|no selections remaining' %{ \
+        select '$kak_opt_previous_cursor'; \
+        rmhooks window if-cursor
+      }"
       # on validated prompt
       echo "hook -group if-cursor window RawKey <ret> %{ \
         rmhooks window if-cursor
