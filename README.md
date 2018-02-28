@@ -24,6 +24,11 @@ Here are the commands affected by this script:
 - keep matching: `<a-k>` → `%<a-s><a-k>`
 - keep not matching: `<a-K>` → `%<a-s><a-K>`
 
+If the commands above display a prompt and you cancel it (with `<esc>`), you'll get back the original cursor.
+Same thing for matching errors.
+
+To remove the mappings if needed, run `auto-percent-unmap` (`auto-percent-map` to add them back).
+
 ## See Also
 
 This behavior is somehow similar to the one found in [vis](https://github.com/martanne/vis):
