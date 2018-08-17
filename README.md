@@ -29,12 +29,31 @@ Same thing for matching errors.
 
 To remove the mappings if needed, run `auto-percent-unmap` (`auto-percent-map` to add them back).
 
+### `select-complement` command
+
+The `select-complement` command is useful in *oops* scenarios. Let's illustrate with a quick example.
+
+You want to `split` the elements of the following list `(foo, bar, qux)` in order to rotate them (with `<a-)>`) later on.
+So you do `<a-i>b` to select inside the parens and then do `s, <ret>`. Oops, you've made a mistake by selecting the commas and
+spaces which was not what you had in mind. The correct operation would have been to use `S` (split) instead of `s`.
+
+Unfortunately, Kakoune does not currently provide on easy way to *undo a selection*.
+
+You can fix your problem with `select-complement`. What it does is going back in time and doing the `<a-i>b` again (using auto marks),
+and running the `S` command with the same regex you've just provided.
+
+So to recap, with this command you can toggle between:
+- `s` <-> `S`
+- `<a-k>` <-> `<a-K>`
+
+Note that it's only intented to work when you execute it *immediately* after.
+
 ## See Also
 
 This behavior is somehow similar to the one found in [vis](https://github.com/martanne/vis):
 
     If only one selection exists x and y default to the whole file 0,$.
-    
+
 In Kakoune dialect: the `x` command is `s` (select), the `y` command is `S` (split) and  the `0,$` address is `%` (whole buffer).
 
 - [kakoune-auto-star](https://github.com/Delapouite/kakoune-auto-star)

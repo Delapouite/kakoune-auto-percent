@@ -1,7 +1,13 @@
+declare-option -hidden str last_auto_percent
+
 # arg1: enhanced keys
 # arg2: default key
 # arg3: no-hooks (because no prompt involved)
 define-command -hidden if-cursor -params 2..3 %{
+  # save selection before operation for later 'select-complement'
+  execute-keys '"zZ'
+  set-option window last_auto_percent %arg{2}
+
   %sh{
     length=${#kak_selections}
     if [ $length -eq 1 ]; then
@@ -22,10 +28,28 @@ define-command -hidden if-cursor -params 2..3 %{
         }"
       fi
       # prepend percent
-      echo "exec '%$kak_count$1'";
+      echo "execute-keys '%$kak_count$1'";
     else
       # default behavior
-      echo "exec $kak_count$2"
+      echo "execute-keys $kak_count$2"
+    fi
+  }
+}
+
+define-command select-complement -docstring 'select complement from previous s/S <a-k>/<a-K> operation' %{
+  # restore previous selection from z register
+  execute-keys '"zz'
+  %sh{
+    case "$kak_opt_last_auto_percent" in
+      's') k='S' ;;
+      'S') k='s' ;;
+      '<a-k>') k='<a-K>' ;;
+      '<a-K>') k='<a-k>' ;;
+    esac
+    if [ -n "$k" ]; then
+      # to call select-complement again
+      echo "set-option window last_auto_percent $k"
+      echo "execute-keys $k <ret>"
     fi
   }
 }
