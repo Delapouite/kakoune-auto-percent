@@ -63,6 +63,10 @@ define-command -hidden auto-percent-map %{
   map global normal <a-S> ':if-cursor <lt>a-S> <lt>a-S> no-hooks<ret>' -docstring 'auto-percent <a-S>'
   map global normal <a-k> ':if-cursor <lt>a-s><lt>a-k> <lt>a-k><ret>' -docstring 'auto-percent <a-k>'
   map global normal <a-K> ':if-cursor <lt>a-s><lt>a-K> <lt>a-K><ret>' -docstring 'auto-percent <a-K>'
+  map global normal ( ':if-cursor <lt>a-s>( ( no-hooks<ret>' -docstring 'auto-percent ('
+  map global normal ) ':if-cursor <lt>a-s>) ) no-hooks<ret>' -docstring 'auto-percent )'
+  map global normal <a-(> ':if-cursor <lt>a-s><lt>a-(> <lt>a-(> no-hooks<ret>' -docstring 'auto-percent <a-(>'
+  map global normal <a-)> ':if-cursor <lt>a-s><lt>a-)> <lt>a-)> no-hooks<ret>' -docstring 'auto-percent <a-)>'
 }
 
 # in rare scenarios when you need the original mappings
@@ -73,6 +77,10 @@ define-command -hidden auto-percent-unmap %{
   unmap global normal <a-S>
   unmap global normal <a-k>
   unmap global normal <a-K>
+  unmap global normal (
+  unmap global normal )
+  unmap global normal <a-(>
+  unmap global normal <a-)>
 }
 
 # init

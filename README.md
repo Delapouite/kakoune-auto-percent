@@ -8,14 +8,14 @@ Add `auto-percent.kak` to your autoload dir: `~/.config/kak/autoload/`.
 
 ## Usage
 
-Some primitives commands only make sense when they operate on selections bigger than the simple *cursor selection*.
+Some normal commands only make sense when they operate on selections bigger than the simple *cursor selection*.
 
 For instance, pressing `s` in normal mode with just a single *cursor selection* is not really useful.
 With this script, pressing `s` will first select the whole content of the buffer with `%`. Hence the name of this plugin.
 
 When the main selection is bigger than 1 char or/and they are more than 1 selection, the default behavior is applied.
 
-Here are the commands affected by this script:
+Here are the normal commands affected by this script:
 
 - select: `s` → `%s`
 - split: `S` → `%S`
@@ -23,11 +23,17 @@ Here are the commands affected by this script:
 - split on boundaries: `<a-S>` → `%<a-S>`
 - keep matching: `<a-k>` → `%<a-s><a-k>`
 - keep not matching: `<a-K>` → `%<a-s><a-K>`
+- rotate selections forward: `)` → `%<a-s>)`
+- rotate selections backward: `(` → `%<a-s>(`
+- rotate selections contents forward: `<a-)>` → `%<a-s><a-)>`
+- rotate selections contents backward: `<a-(>` → `%<a-s><a-(>`
 
 If the commands above display a prompt and you cancel it (with `<esc>`), you'll get back the original cursor.
 Same thing for matching errors.
 
 To remove the mappings if needed, run `auto-percent-unmap` (`auto-percent-map` to add them back).
+
+Another good candidate to tweak: merge continuous selections `<a-m>`
 
 ### `select-complement` command
 
