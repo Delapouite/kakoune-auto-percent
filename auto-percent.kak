@@ -8,9 +8,10 @@ define-command -hidden if-cursor -params 2..3 %{
   execute-keys '"zZ'
   set-option window last_auto_percent %arg{2}
 
-  %sh{
+  evaluate-commands %sh{
     length=${#kak_selections}
-    if [ $length -eq 1 ]; then
+    # 3 = 1 char + 2 quotes
+    if [ $length -eq 3 ]; then
       if [ -z $3 ]; then
         # on cancelled prompt
         echo "hook -group if-cursor window RawKey <esc> %{ \
@@ -39,7 +40,7 @@ define-command -hidden if-cursor -params 2..3 %{
 define-command select-complement -docstring 'select complement from previous s/S <a-k>/<a-K> operation' %{
   # restore previous selection from z register
   execute-keys '"zz'
-  %sh{
+  evaluate-commands %sh{
     case "$kak_opt_last_auto_percent" in
       's') k='S' ;;
       'S') k='s' ;;
