@@ -10,8 +10,7 @@ define-command -hidden if-cursor -params 2..3 %{
 
   evaluate-commands %sh{
     length=${#kak_selections}
-    # 3 = 1 char + 2 quotes
-    if [ $length -eq 3 ]; then
+    if [ $length -eq 1 ]; then
       if [ -z $3 ]; then
         # on cancelled prompt
         echo "hook -group if-cursor window RawKey <esc> %{ \
