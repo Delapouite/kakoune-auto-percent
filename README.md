@@ -6,6 +6,12 @@
 
 Add `auto-percent.kak` to your autoload dir: `~/.config/kak/autoload/`.
 
+Or via [plug.kak](https://github.com/andreyorst/plug.kak):
+
+```
+plug 'delapouite/kakoune-auto-percent'
+```
+
 ## Usage
 
 Some normal commands only make sense when they operate on selections bigger than the simple *cursor selection*.
