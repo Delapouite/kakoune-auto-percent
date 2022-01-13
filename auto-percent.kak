@@ -9,9 +9,9 @@ define-command -hidden if-cursor -params 2..3 %{
   set-option window last_auto_percent %arg{2}
 
   evaluate-commands %sh{
-    length=${#kak_selections}
-    if [ $length -eq 1 ]; then
-      if [ -z $3 ]; then
+    length="$kak_selections_length"
+    if [ "$length" -eq 1 ]; then
+      if [ -z "$3" ]; then
         # on cancelled prompt
         echo "hook -group if-cursor window RawKey <esc> %{ \
           select '$kak_selection_desc'; \
